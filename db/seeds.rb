@@ -11,9 +11,8 @@ end
 end
 
 50.times do
-  name = %w(Компьтер Ноутбук Телефон Планшет Телевизор).sample
-  name << ' ' << Brand.all.sample.to_s
-  name << ' ' << ('A'..'Z').to_a.sample(rand(4) + 1).join
+  name = ''
+  name << ' ' << ('A'..'Z').to_a.sample(rand(6) + 1).join
   name << '-' << (rand(1000) + 1).to_s
   Product.create! category: Category.all.sample,
                   brand: Brand.all.sample,

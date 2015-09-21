@@ -1,0 +1,11 @@
+ru:
+  attributes:
+    name: Название
+    category: Категория
+    brand: Бренд
+    price: Цена
+  activerecord:
+    attributes:
+      product:
+        stores: Наличие в магазинах
+        name: Модель

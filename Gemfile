@@ -20,7 +20,16 @@ gem 'uglifier', '>= 1.3.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-minitest'
   gem 'quiet_assets'
+end
+
+group :development, :test do
+  gem 'awesome_pry'
+  gem 'factory_girl_rails'
+  gem 'factory_girl_sequences'
   gem 'spring'
   gem 'sqlite3'
 end

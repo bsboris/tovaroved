@@ -1,7 +1,23 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+%w(Apple Google Microsoft Tesla Nokia Samsung LG Lenovo Acer ASUS Toshiba Sony).each do |name|
+  Brand.create!(name: name)
+end
+
+%w(Компьютеры Ноутбуки Телефоны Планшеты Телевизоры Разное).each do |name|
+  Category.create!(name: name)
+end
+
+%w(Магазин\ на\ Невском Магазин\ на\ Петроградке Магазин\ в\ Озерках).each do |name|
+  Store.create!(name: name)
+end
+
+50.times do
+  name = %w(Компьтер Ноутбук Телефон Планшет Телевизор).sample
+  name << ' ' << Brand.all.sample.to_s
+  name << ' ' << ('A'..'Z').to_a.sample(rand(4) + 1).join
+  name << '-' << (rand(1000) + 1).to_s
+  Product.create! category: Category.all.sample,
+                  brand: Brand.all.sample,
+                  name: name,
+                  price: rand(10000),
+                  stores: Store.all.sample(rand(4))
+end

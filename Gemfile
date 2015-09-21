@@ -13,6 +13,7 @@ gem 'puma'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '~> 3.1'
 gem 'slim'
+gem 'sorted', '1.0.0'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do

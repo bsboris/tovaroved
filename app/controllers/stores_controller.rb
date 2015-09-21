@@ -33,7 +33,7 @@ class StoresController < ApplicationController
   private
 
   def stores
-    @stores ||= store_scope.all
+    @stores ||= store_scope.ordered_by_name
   end
 
   def store

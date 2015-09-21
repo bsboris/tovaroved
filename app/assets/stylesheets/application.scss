@@ -18,3 +18,13 @@ td.controls {
 .alert-alert {
   @extend .alert-danger;
 }
+
+.sorted {
+  &.asc:after {
+    content: ' ▴'
+  }
+
+  &.desc:after {
+    content: ' ▾'
+  }
+}

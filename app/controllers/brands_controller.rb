@@ -33,7 +33,7 @@ class BrandsController < ApplicationController
   private
 
   def brands
-    @brands ||= brand_scope.all
+    @brands ||= brand_scope.ordered_by_name
   end
 
   def brand

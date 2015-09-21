@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
   private
 
   def categories
-    @categories ||= category_scope.all
+    @categories ||= category_scope.ordered_by_name
   end
 
   def category

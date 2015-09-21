@@ -4,10 +4,10 @@
 - if products.any?
   table.table
     thead
-      th = Product.human_attribute_name :category
-      th = Product.human_attribute_name :brand
-      th = Product.human_attribute_name :name
-      th = Product.human_attribute_name :price
+      th = link_to_sorted Product.human_attribute_name(:category), 'categories.name'
+      th = link_to_sorted Product.human_attribute_name(:brand), 'brands.name'
+      th = link_to_sorted Product.human_attribute_name(:name), 'products.name'
+      th = link_to_sorted Product.human_attribute_name(:price), :price
       th = Product.human_attribute_name :stores
       th
     tbody

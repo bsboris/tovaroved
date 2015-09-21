@@ -8,7 +8,7 @@
       th
     tbody
       - categories.each do |category|
-        tr
+        = content_tag_for(:tr, category) do
           td = category.name
           td.controls
             = edit_link category

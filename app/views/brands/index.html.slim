@@ -8,7 +8,7 @@
       th
     tbody
       - brands.each do |brand|
-        tr
+        = content_tag_for(:tr, brand) do
           td = brand.name
           td.controls
             = edit_link brand

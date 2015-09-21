@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def create
     save_category!
-    redirect_to categories_url
+    redirect_to categories_url, notice: 'Категория успешно добавлена.'
   rescue ActiveRecord::RecordInvalid => e
     render :new, locals: { category: e.record }
   end
@@ -20,15 +20,19 @@ class CategoriesController < ApplicationController
 
   def update
     save_category!
-    redirect_to categories_url
+    redirect_to categories_url, notice: 'Категория успешно изменена.'
   rescue ActiveRecord::RecordInvalid => e
     render :edit, locals: { category: e.record }
   end
 
   def destroy
     category.destroy!
+    flash.now[:notice] = 'Категория удалена.'
+  rescue ActiveRecord::DeleteRestrictionError => e
+    flash.now[:alert] = 'Не удается удалить категорию.'
+  ensure
     respond_to do |format|
-      format.js { render locals: { category: category } }
+      format.js { render 'shared/destroy', locals: { model: category } }
       format.html { redirect_to categories_url }
     end
   end

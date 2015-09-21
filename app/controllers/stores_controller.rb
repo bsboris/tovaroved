@@ -9,7 +9,7 @@ class StoresController < ApplicationController
 
   def create
     save_store!
-    redirect_to stores_url
+    redirect_to stores_url, notice: 'Магазин успешно добавлен.'
   rescue ActiveRecord::RecordInvalid => e
     render :new, locals: { store: e.record }
   end
@@ -20,15 +20,19 @@ class StoresController < ApplicationController
 
   def update
     save_store!
-    redirect_to stores_url
+    redirect_to stores_url, notice: 'Магазин успешно изменен.'
   rescue ActiveRecord::RecordInvalid => e
     render :edit, locals: { store: e.record }
   end
 
   def destroy
     store.destroy!
+    flash.now[:notice] = 'Магазин удален.'
+  rescue ActiveRecord::DeleteRestrictionError => e
+    flash.now[:alert] = 'Не удается удалить магазин.'
+  ensure
     respond_to do |format|
-      format.js { render locals: { store: store } }
+      format.js { render 'shared/destroy', locals: { model: store } }
       format.html { redirect_to stores_url }
     end
   end

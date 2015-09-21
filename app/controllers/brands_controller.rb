@@ -9,7 +9,7 @@ class BrandsController < ApplicationController
 
   def create
     save_brand!
-    redirect_to brands_url
+    redirect_to brands_url, notice: 'Бренд успешно добавлен.'
   rescue ActiveRecord::RecordInvalid => e
     render :new, locals: { brand: e.record }
   end
@@ -20,15 +20,19 @@ class BrandsController < ApplicationController
 
   def update
     save_brand!
-    redirect_to brands_url
+    redirect_to brands_url, notice: 'Бренд успешно изменен.'
   rescue ActiveRecord::RecordInvalid => e
     render :edit, locals: { brand: e.record }
   end
 
   def destroy
     brand.destroy!
+    flash.now[:notice] = 'Бренд удален.'
+  rescue ActiveRecord::DeleteRestrictionError => e
+    flash.now[:alert] = 'Не удается удалить бренд.'
+  ensure
     respond_to do |format|
-      format.js { render locals: { brand: brand } }
+      format.js { render 'shared/destroy', locals: { model: brand } }
       format.html { redirect_to brands_url }
     end
   end

@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 
   def create
     save_product!
-    redirect_to products_url
+    redirect_to products_url, notice: 'Продукт успешно добавлен.'
   rescue ActiveRecord::RecordInvalid => e
     render :new, locals: { product: e.record }
   end
@@ -20,15 +20,19 @@ class ProductsController < ApplicationController
 
   def update
     save_product!
-    redirect_to products_url
+    redirect_to products_url, notice: 'Продукт успешно изменен.'
   rescue ActiveRecord::RecordInvalid => e
     render :edit, locals: { product: e.record }
   end
 
   def destroy
     product.destroy!
+    flash.now[:notice] = 'Продукт удален.'
+  rescue ActiveRecord::DeleteRestrictionError => e
+    flash.now[:alert] = 'Не удается удалить продукт.'
+  ensure
     respond_to do |format|
-      format.js { render locals: { product: product } }
+      format.js { render 'shared/destroy', locals: { model: product } }
       format.html { redirect_to products_url }
     end
   end

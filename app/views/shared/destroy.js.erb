@@ -1,0 +1,4 @@
+<% if model.destroyed? %>
+  $('#<%= dom_id(model) %>').remove();
+<% end %>
+$('#main').prepend('<%=j render 'layouts/flashes' %>');

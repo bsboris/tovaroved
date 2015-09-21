@@ -20,6 +20,6 @@ module ApplicationHelper
   end
 
   def delete_link(record, opts = {})
-    link_to 'Удалить', record, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'text-danger'
+    link_to 'Удалить', record, method: :delete, data: { confirm: 'Вы уверены?' }, remote: true, class: 'text-danger'
   end
 end

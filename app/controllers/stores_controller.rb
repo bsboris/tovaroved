@@ -27,7 +27,10 @@ class StoresController < ApplicationController
 
   def destroy
     store.destroy!
-    redirect_to stores_url
+    respond_to do |format|
+      format.js { render locals: { store: store } }
+      format.html { redirect_to stores_url }
+    end
   end
 
   private

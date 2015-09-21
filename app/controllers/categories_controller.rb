@@ -27,7 +27,10 @@ class CategoriesController < ApplicationController
 
   def destroy
     category.destroy!
-    redirect_to categories_url
+    respond_to do |format|
+      format.js { render locals: { category: category } }
+      format.html { redirect_to categories_url }
+    end
   end
 
   private

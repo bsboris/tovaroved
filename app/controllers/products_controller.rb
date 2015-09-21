@@ -27,7 +27,10 @@ class ProductsController < ApplicationController
 
   def destroy
     product.destroy!
-    redirect_to products_url
+    respond_to do |format|
+      format.js { render locals: { product: product } }
+      format.html { redirect_to products_url }
+    end
   end
 
   private

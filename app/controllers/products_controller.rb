@@ -36,7 +36,11 @@ class ProductsController < ApplicationController
   private
 
   def products
-    @products ||= product_scope.includes(:category, :brand).references(:category, :brand).sorted(params[:sort], 'products.name')
+    @products ||= product_scope.
+      includes(:category, :brand).
+      references(:category, :brand).
+      sorted(params[:sort], 'products.name').
+      page(params[:page])
   end
 
   def product

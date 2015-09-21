@@ -22,4 +22,8 @@ module ApplicationHelper
   def delete_link(record, opts = {})
     link_to 'Удалить', record, method: :delete, data: { confirm: 'Вы уверены?' }, remote: true, class: 'text-danger'
   end
+
+  def pagination(collection)
+    paginate collection, theme: :bootstrap
+  end
 end

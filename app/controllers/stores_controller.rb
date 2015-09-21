@@ -36,7 +36,7 @@ class StoresController < ApplicationController
   private
 
   def stores
-    @stores ||= store_scope.ordered_by_name
+    @stores ||= store_scope.ordered_by_name.page(params[:page])
   end
 
   def store

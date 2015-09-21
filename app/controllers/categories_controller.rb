@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
   private
 
   def categories
-    @categories ||= category_scope.ordered_by_name
+    @categories ||= category_scope.ordered_by_name.page(params[:page])
   end
 
   def category

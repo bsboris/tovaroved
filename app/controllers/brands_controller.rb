@@ -36,7 +36,7 @@ class BrandsController < ApplicationController
   private
 
   def brands
-    @brands ||= brand_scope.ordered_by_name
+    @brands ||= brand_scope.ordered_by_name.page(params[:page])
   end
 
   def brand

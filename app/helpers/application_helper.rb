@@ -18,4 +18,8 @@ module ApplicationHelper
   def edit_link(record, opts = {})
     link_to 'Редактировать', [:edit, record], opts
   end
+
+  def delete_link(record, opts = {})
+    link_to 'Удалить', record, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'text-danger'
+  end
 end

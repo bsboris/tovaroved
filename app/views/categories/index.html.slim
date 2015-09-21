@@ -1,0 +1,15 @@
+= page_header 'Категории' do
+  = link_to "Добавить категорию", new_category_path, class: 'btn btn-default'
+
+- if categories.any?
+  table.table
+    thead
+      th = Category.human_attribute_name :name
+      th
+    tbody
+      - categories.each do |category|
+        tr
+          td = category.name
+          td.controls
+            = edit_link category
+            =< delete_link category

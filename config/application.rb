@@ -9,7 +9,12 @@ Bundler.require(*Rails.groups)
 module Tovaroved
   class Application < Rails::Application
     config.time_zone = 'Moscow'
+
     config.encoding = 'utf-8'
+
+    config.i18n.default_locale = :ru
+    config.i18n.locale = :ru
+
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

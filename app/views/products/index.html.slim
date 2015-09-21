@@ -1,0 +1,27 @@
+= page_header 'Продукты' do
+  = link_to "Добавить продукт", new_product_path, class: 'btn btn-default'
+
+- if products.any?
+  table.table
+    thead
+      th = Product.human_attribute_name :category
+      th = Product.human_attribute_name :brand
+      th = Product.human_attribute_name :name
+      th = Product.human_attribute_name :price
+      th = Product.human_attribute_name :stores
+      th
+    tbody
+      - products.each do |product|
+        tr
+          td = product.category
+          td = product.brand
+          td = product.name
+          td = product.price
+          td
+            - if product.stores.any?
+              ul
+                - product.stores.each do |store|
+                  li = store
+          td.controls
+            = edit_link product
+            =< delete_link product

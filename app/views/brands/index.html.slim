@@ -1,0 +1,15 @@
+= page_header 'Бренды' do
+  = link_to "Добавить бренд", new_brand_path, class: 'btn btn-default'
+
+- if brands.any?
+  table.table
+    thead
+      th = Brand.human_attribute_name :name
+      th
+    tbody
+      - brands.each do |brand|
+        tr
+          td = brand.name
+          td.controls
+            = edit_link brand
+            =< delete_link brand

@@ -1,0 +1,15 @@
+= page_header 'Магазины' do
+  = link_to "Добавить магазин", new_store_path, class: 'btn btn-default'
+
+- if stores.any?
+  table.table
+    thead
+      th = Store.human_attribute_name :name
+      th
+    tbody
+      - stores.each do |store|
+        tr
+          td = store.name
+          td.controls
+            = edit_link store
+            =< delete_link store

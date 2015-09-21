@@ -1,0 +1,11 @@
+ru:
+  simple_form:
+    "yes": Да
+    "no": Нет
+    required:
+      text: обязательно
+      mark: '*'
+  helpers:
+    submit:
+      create: Добавить
+      update: Сохранить

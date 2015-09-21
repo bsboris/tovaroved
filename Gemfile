@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'puma'
 gem 'sass-rails', '~> 5.0'
+gem 'simple_form', '~> 3.1'
 gem 'slim'
 gem 'uglifier', '>= 1.3.0'
 

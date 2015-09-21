@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :stores, except: %i(show)
   resources :products, except: %i(show)
 
-  root 'products#index'
+  root 'application#index'
 end
